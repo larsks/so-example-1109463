@@ -1,0 +1,15 @@
+# This is a working configuration
+#
+# - Does not use a provider alias
+# - Uses "Require ldap-user" successfully
+
+<Location "/">
+  AuthLDAPURL ldap://ldap/ou=users,dc=example,dc=com?cn
+  AuthLDAPBindDN uid=authreader,ou=system,dc=example,dc=com
+  AuthLDAPBindPassword secret
+
+  AuthName "LDAP"
+  AuthType Basic
+  AuthBasicProvider ldap
+  Require ldap-user user1
+</Location>
