@@ -4,13 +4,12 @@ objectClass: dcObject
 o: example.com
 dc: example
 
-# password is "secret"
 dn: cn=manager,dc=example,dc=com
 objectClass: organizationalPerson
 objectClass: simpleSecurityObject
 cn: manager
 sn: manager
-userPassword: {SSHA}OHuOWLPQsG/zqXXviJ9gFcpgEW7BsH9Y
+userPassword: secret
 
 dn: ou=users,dc=example,dc=com
 objectClass: organizationalUnit
@@ -24,21 +23,19 @@ dn: ou=system,dc=example,dc=com
 objectClass: organizationalUnit
 ou: system
 
-# password is "secret1"
 dn: cn=user1,ou=users,dc=example,dc=com
 objectClass: organizationalPerson
 objectClass: simpleSecurityObject
 cn: user1
 sn: user1
-userPassword:: e1NTSEF9bE5ubjA0OGY1VEZNcWpiL2hXYU1pYlltNUxhdkRGdEs=
+userPassword: secret1
 
-# password is "secret2"
 dn: cn=user2,ou=users,dc=example,dc=com
 objectClass: organizationalPerson
 objectClass: simpleSecurityObject
 cn: user2
-userPassword:: e1NTSEF9dk5FVW8xTTQyYUc5dzRwMXp3TWtqWTIrN3hVemVPZUY=
 sn: user2
+userPassword: secret2
 
 dn: cn=root,ou=groups,dc=example,dc=com
 cn: root
@@ -51,32 +48,11 @@ objectClass: groupOfUniqueNames
 uniqueMember: cn=user1,ou=users,dc=example,dc=com
 uniqueMember: cn=user2,ou=users,dc=example,dc=com
 
-# password is "secret"
 dn: uid=authreader,ou=system,dc=example,dc=com
 objectClass: organizationalPerson
 objectClass: simpleSecurityObject
 objectClass: uidObject
 cn: authreader
 sn: authreader
-userPassword:: e1NTSEF9V0FWZm9uamYyRmxxQzFRV29uMmk1Ny9ySHpuZ1JJV1A=
+userPassword: secret
 uid: authreader
-
-dn: ou=nested,ou=users,dc=example,dc=com
-objectClass: organizationalUnit
-ou: nested
-
-dn: cn=testuser,ou=nested,ou=users,dc=example,dc=com
-objectClass: organizationalPerson
-objectClass: simpleSecurityObject
-cn: testuser
-sn: testuser
-userPassword:: e1NTSEF9aHFnNUFWWVprUjFBL1BoZXlmWHBkQTJRSlFSWHcvSVM=
-
-dn: ou=nested,ou=groups,dc=example,dc=com
-objectClass: organizationalUnit
-ou: nested
-
-dn: cn=testgroup,ou=nested,ou=groups,dc=example,dc=com
-objectClass: organizationalPerson
-cn: testgroup
-sn: testgroup
