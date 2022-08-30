@@ -1,3 +1,5 @@
+# Apache HTTPD and LDAP Authn/Authz
+
 This repository accompanies my answer to <https://serverfault.com/questions/1109463/apache2-openldap-authorization-fails-using-ldap-user/1109472>.
 
 If you `docker-compose up` this environment, you'll get three Apache instances:
