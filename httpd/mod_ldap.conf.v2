@@ -9,7 +9,7 @@
   AuthLDAPBindPassword secret
 </AuthnProviderAlias>
 
-<Location "/">
+<Location "/auth">
   AuthName "LDAP"
   AuthType Basic
   AuthBasicProvider example

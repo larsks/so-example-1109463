@@ -3,7 +3,7 @@
 # - Does not use a provider alias
 # - Uses "Require ldap-user" successfully
 
-<Location "/">
+<Location "/auth">
   AuthLDAPURL ldap://ldap/ou=users,dc=example,dc=com?cn
   AuthLDAPBindDN uid=authreader,ou=system,dc=example,dc=com
   AuthLDAPBindPassword secret

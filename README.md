@@ -14,10 +14,10 @@ If you `docker-compose up` this environment, you'll get three Apache instances:
 
   This does not use a provider alias and works.
 
-To test these services, you can use username `user1` with password `secret1`:
+To test these services, try to access the `/auth/` path with username `user1` and password `secret1`:
 
 ```
-$ curl -u user1:secret http://localhost:8082
+$ curl -u user1:secret http://localhost:8082/auth/
 <!doctype html>
 <html>
   <head>
@@ -29,4 +29,27 @@ $ curl -u user1:secret http://localhost:8082
     Congratulations, you have successfully authenticated.
   </body>
 </html>
+```
+
+You can see the configuration for a specific server at the `/config` path:
+
+```
+$ curl http://localhost:8082/config
+#
+# - Using a provider alias
+# - Uses "Require user" instead of "Require ldap-user"
+
+<AuthnProviderAlias ldap example>
+  AuthLDAPURL ldap://ldap/ou=users,dc=example,dc=com?cn
+  AuthLDAPBindDN uid=authreader,ou=system,dc=example,dc=com
+  AuthLDAPBindPassword secret
+</AuthnProviderAlias>
+
+<Location "/auth">
+  AuthName "LDAP"
+  AuthType Basic
+  AuthBasicProvider example
+  Require user user1
+</Location>
+
 ```
