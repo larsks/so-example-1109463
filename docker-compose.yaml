@@ -2,34 +2,31 @@ version: "3"
 
 services:
   httpd_conf_1:
-    build:
-      context: image/httpd
+    image: docker.io/httpd:2.4.54
     volumes:
-      - ./httpd/htdocs:/var/www/html:z
-      - ./httpd/mod_ldap.conf.v1:/etc/httpd/conf.d/mod_ldap.conf:z
-      - ./httpd/config_alias.conf:/etc/httpd/conf.d/config_alias.conf:z
+      - ./httpd/htdocs:/usr/local/apache2/htdocs/:z
+      - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:z
+      - ./httpd/mod_ldap.conf.v1:/usr/local/apache2/conf/mod_ldap.conf:z
     ports:
-      - "8081:8080"
+      - "8081:80"
 
   httpd_conf_2:
-    build:
-      context: image/httpd
+    image: docker.io/httpd:2.4.54
     volumes:
-      - ./httpd/htdocs:/var/www/html:z
-      - ./httpd/mod_ldap.conf.v2:/etc/httpd/conf.d/mod_ldap.conf:z
-      - ./httpd/config_alias.conf:/etc/httpd/conf.d/config_alias.conf:z
+      - ./httpd/htdocs:/usr/local/apache2/htdocs/:z
+      - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:z
+      - ./httpd/mod_ldap.conf.v2:/usr/local/apache2/conf/mod_ldap.conf:z
     ports:
-      - "8082:8080"
+      - "8082:80"
 
   httpd_conf_3:
-    build:
-      context: image/httpd
+    image: docker.io/httpd:2.4.54
     volumes:
-      - ./httpd/htdocs:/var/www/html:z
-      - ./httpd/mod_ldap.conf.v3:/etc/httpd/conf.d/mod_ldap.conf:z
-      - ./httpd/config_alias.conf:/etc/httpd/conf.d/config_alias.conf:z
+      - ./httpd/htdocs:/usr/local/apache2/htdocs/:z
+      - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:z
+      - ./httpd/mod_ldap.conf.v3:/usr/local/apache2/conf/mod_ldap.conf:z
     ports:
-      - "8083:8080"
+      - "8083:80"
 
   ldap:
     image: slapd
